@@ -1,0 +1,79 @@
+---
+layout:     post
+title:      "Fermat's theorem on sums of two squares."
+date:       2016-01-13 12:00:00
+author:     "new-player"
+header-img: "img/fermat-main-bg.jpg"
+---
+
+<p>I was recently working on this SPOJ problem <a href="http://www.spoj.com/problems/TWOSQRS/" target="_blank">TWOSQRS</a>.</p>
+
+<p>Problem: <br><strong>"Given integer n decide if it is possible to represent it as a sum of two squares of integers."</strong></p>
+
+<p>Though this can be solved in a naive way using two loops, there is a theorem which provides answer to this question.
+That theorem was given by Fermat.
+</p>
+
+<p>In additive number theory, Pierre de Fermat's theorem on sums of two squares states that an odd prime p is expressible as
+<strong>p = x&#178; + y&#178;,</strong>
+
+with x and y integers, if and only if
+<strong>p &#8801; 1 (mod 4)</strong>
+
+</p>
+<p>He gave this statement on 1640 but no proof was given.</p>
+
+<!-- <p>For those who have seen the Earth from space, and for the hundreds and perhaps thousands more who will, the experience most certainly changes your perspective. The things that we share in our world are far more valuable than those which divide us.</p> -->
+
+<h2 class="section-heading">Congruence relation</h2>
+
+<p>Consider the expression, <strong>A≡B (mod C)</strong>
+<br>This says that A is congruent to B modulo C i.e <strong>A(mod C) = B(mod C)</strong></p>
+
+<p>e.g: 
+<strong>-43 ≡-7 (mod 12)</strong> because (-43-(-7))(mod 12) = 0 or -43(mod 12) = -7(mod 12)
+</p>
+
+<p>So, considering the equation with x and y as integers: <br>
+<strong>p = x&#178; + y&#178;,</strong>
+<br>
+We know that prime numbers (except 2) are either congurent to 1 modulo 4 (e.g 5, 13, 17 etc) or 3 modulo 4 (e.g 3, 7, 11 etc).
+All primes congurent to 1 modulo 4 can be expressed as sum of two squares. Whereas, primes congurent to 3 modulo 4 cannot.
+<br>
+We can also state that all squares are congruent to 0 or 1 modulo 4.
+</p>
+
+
+<!-- <blockquote>The dreams of yesterday are the hopes of today and the reality of tomorrow. Science has not yet mastered prophecy. We predict too much for the next year and yet far too little for the next ten.</blockquote> -->
+
+
+<h2 class="section-heading">Fermat's two squares theorem</h2>
+
+<p>We can state the theorem in following number of ways.</p>
+<p>1) If <strong>p = 4n + 1</strong> is prime in Z, then
+<br>
+<strong>p = x&#178; + y&#178;</strong> for some x, y &#8714; Z.</p>
+
+<p>2) This theorem has an easy converse:
+If <strong>p = 4n + 3</strong> is a prime in Z, then p cannot be written as a sum of two squares. 
+
+<p>3) A number <strong>p = x<sub>1</sub><sup>p<sub>1</sub></sup> x<sub>2</sub><sup>p<sub>2</sub></sup> . . . x<sub>m</sub><sup>p<sub>m</sub></sup></strong> (prime factorisation of p) can be represented as the sum of two squares if every prime of the form 4k +3 have even degree.
+</p>
+<p>
+Lets try 3<sup>2</sup> + 10<sup>2</sup> = 109 (prime number with 4k+1 form.)
+<br>109 mod 4 ≡ 1
+<br>
+Lets try one more, 7<sup>2</sup> + 7<sup>2</sup> = 98 = 2<sup>1</sup> 7<sup>2</sup>
+<br>7 is a 4k+3 prime and has even power.
+</p>
+
+<h2 class="section-heading">Solution</h2>
+
+<!-- <a href="#">
+    <img src="{{ site.baseurl }}/img/post-sample-image.jpg" alt="Post Sample Image">
+</a>
+<span class="caption text-muted">To go places and do things that have never been done before – that’s what living is all about.</span>
+ -->
+<p>Two Steps. Firstly generate prime numbers using <a href="Sieve of Eratosthenes" target="_blank">Sieve of Eratosthenes</a>.
+<br>Then for each test case check for all prime factors in 4k+3 form if they occur even number of times. Show the output accordingly.
+</p>
